@@ -45,7 +45,9 @@ final class ApiController extends AbstractController
         $livre = $livreRepository->find($id);
 
         if (!$livre) {
-            throw $this->createNotFoundException('Le livre demandé n\'existe pas.');
+            return new JsonResponse([
+                'status' => 'Le livre demandé n\'existe pas.',
+            ], Response::HTTP_OK);
         }
 
         return $this->json([
@@ -89,7 +91,9 @@ final class ApiController extends AbstractController
         $livre = $livreRepository->find($id);
 
         if (!$livre) {
-            throw $this->createNotFoundException('Le livre demandé n\'existe pas.');
+            return new JsonResponse([
+                'status' => 'Le livre demandé n\'existe pas.',
+            ], Response::HTTP_OK);
         }
 
         $payload = $request->getPayload();
@@ -126,7 +130,9 @@ final class ApiController extends AbstractController
         $livre = $livreRepository->find($id);
 
         if (!$livre) {
-            throw $this->createNotFoundException('Le livre demandé n\'existe pas.');
+            return new JsonResponse([
+                'status' => 'Le livre demandé n\'existe pas.',
+            ], Response::HTTP_OK);
         }
 
         $entityManager->remove($livre);

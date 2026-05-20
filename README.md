@@ -19,10 +19,17 @@ Si vous désirez vous connecter sur le back-end, veuillez utiliser ces deux comp
     - mot de passe : password
 Si vous souhaitez faire des appels API, vous aurez besoin d'être admin, auquel cas vous serez refusé.
 Voici une liste non exhaustive d'appels API possible :
-- /api/livres : renvoi la liste des livres
-- /api/livres/2 : renvoi le détail du livre ayant l'id numéro 2
+- /api/livres [GET] : renvoi la liste des livres
+- /api/livres/{id} [GET]: renvoi le détail du livre ayant l'id numéro 2 (prendre alors l'id d'un livre existant, sinon message erreur)
+- /api/livres [POST]: création d'un livre (sur Postman, respecter ceci: dans "body", cliquez sur "raw" et passer "text" en "json" puis utilisez ce brouillon de json :
+{
+    "titre": "[nom livre]",
+    "auteur": "[auteur livre]",
+    "isbn": [isbn livre],
+    "date_publication": "[annee-mois-jour]",
+    "disponible": [true or false]
+})
+- /api/livres/{id} : permet de modifier le livre ayant l'id (Avoir le même body que sur la method POST, mais inclure uniquement les valeurs à modifier)
+- /api/livres/{id} : permet de supprimer le livre ayant l'id
 
-ToDo list des fonctionnalités à implémenter :
-- route api : POST /api/livres
-- route api : PUT /api/livres/{id}
-- route api : DELETE /api/livres/{id}
+
