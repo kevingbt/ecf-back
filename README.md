@@ -9,6 +9,7 @@ Ensuite il faut suivre ses différentes étapes :
 - Executer le fichier SQL "mediatheque.sql" afin d'ajouter les différentes tables et relations à la bdd
 - Executer cette commande permettant l'ajout de jeu de données : "php bin/console doctrine:fixtures:load"
 Maintenant que votre base de données est en ligne et enrichi, vous pouvez démarrer le serveur via cette commande : "symfony serve".
+Ainsi, votre base de données est enrichie de 10 livres, 5 abonnés et 3 emprunts.
 
 Si vous désirez vous connecter sur le back-end, veuillez utiliser ces deux comptes :
 - Administrateur :
@@ -17,6 +18,32 @@ Si vous désirez vous connecter sur le back-end, veuillez utiliser ces deux comp
 - Bibliothècaire :
     - email : biblio@gmail.com
     - mot de passe : password
+
+
+Voici la liste des urls à votre disposition :
+/login : pour se connecter
+/register : pour se créer un compte
+/logout : pour se déconnecter
+
+Pour tous les urls relatives à la base de données qui suivent, vous devez soit être administrateur, soit bibliothècaire.
+/livre : renvoie la liste des livres
+/livre/new : renvoie un formulaire pour créer un nouveau livre
+/livre/{id} : renvoie sur la page détail du livre ayant l'id
+/livre/{id}/edit : renvoie un formulaire pour modifier le livre ayant l'id
+/livre/{id}/delete : permet de supprimer le livre ayant l'id
+/abonne : renvoie la liste des abonnés
+/abonne/new : renvoie un formulaire pour créer un nouveau abonné
+/abonne/{id} : renvoie sur la page détail de l'abonné ayant l'id
+/abonne/{id}/edit : renvoie un formulaire pour modifier l'abonné ayant l'id
+/abonne/{id}/delete : permet de supprimer l'abonné ayant l'id
+/emprunt : renvoie la liste des emprunts
+/emprunt/new : renvoie un formulaire pour créer un nouvel emprunt
+/emprunt/{id} : renvoie sur la page détail de l'emprunt ayant l'id
+/emprunt/{id}/edit : renvoie un formulaire pour modifier l'emprunt ayant l'id
+/emprunt/{id}/delete : permet de supprimer l'emprunt ayant l'id
+
+Si vous souhaitez retourner un livre, veuillez modifier l'emprunt correspondant en ajoutant la date de retour effective, le livre se mettra automatiquement en disponibilité.
+
 Si vous souhaitez faire des appels API, vous aurez besoin d'être admin, auquel cas vous serez refusé.
 Voici une liste non exhaustive d'appels API possible :
 - /api/livres [GET] : renvoi la liste des livres
