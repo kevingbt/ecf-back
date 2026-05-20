@@ -78,10 +78,6 @@ CREATE TABLE `livre` (
   `disponible` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Déchargement des données de la table `livre`
---
-
 -- --------------------------------------------------------
 
 --
