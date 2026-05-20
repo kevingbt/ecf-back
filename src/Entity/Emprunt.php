@@ -23,10 +23,10 @@ class Emprunt
     private ?\DateTime $date_retour_effective = null;
 
     #[ORM\ManyToOne(inversedBy: 'emprunt_id')]
-    private ?livre $livre_id = null;
+    private ?Livre $livre_id = null;
 
     #[ORM\ManyToOne(inversedBy: 'emprunt_id')]
-    private ?abonne $abonne_id = null;
+    private ?Abonne $abonne_id = null;
 
     public function getId(): ?int
     {
@@ -69,24 +69,24 @@ class Emprunt
         return $this;
     }
 
-    public function getLivreId(): ?livre
+    public function getLivreId(): ?Livre
     {
         return $this->livre_id;
     }
 
-    public function setLivreId(?livre $livre_id): static
+    public function setLivreId(?Livre $livre_id): static
     {
         $this->livre_id = $livre_id;
 
         return $this;
     }
 
-    public function getAbonneId(): ?abonne
+    public function getAbonneId(): ?Abonne
     {
         return $this->abonne_id;
     }
 
-    public function setAbonneId(?abonne $abonne_id): static
+    public function setAbonneId(?Abonne $abonne_id): static
     {
         $this->abonne_id = $abonne_id;
 

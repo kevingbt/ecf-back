@@ -2,9 +2,9 @@
 
 namespace App\Form;
 
-use App\Entity\abonne;
+use App\Entity\Abonne;
 use App\Entity\Emprunt;
-use App\Entity\livre;
+use App\Entity\Livre;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,11 +19,11 @@ class EmpruntType extends AbstractType
             ->add('date_retour_prevue')
             ->add('date_retour_effective')
             ->add('livre_id', EntityType::class, [
-                'class' => livre::class,
+                'class' => Livre::class,
                 'choice_label' => 'id',
             ])
             ->add('abonne_id', EntityType::class, [
-                'class' => abonne::class,
+                'class' => Abonne::class,
                 'choice_label' => 'id',
             ])
         ;
