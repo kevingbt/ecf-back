@@ -37,7 +37,7 @@ final class EmpruntController extends AbstractController
                 return $this->render('emprunt/new.html.twig', [
                     'emprunt' => $emprunt,
                     'form' => $form,
-                    'message' => 'Le livre est déjà emprunté ou indisponible.'
+                    'message' => 'Le livre est déjà emprunté.'
                 ], new Response('', Response::HTTP_UNPROCESSABLE_ENTITY));
             }
             $livre->setDisponible(false);

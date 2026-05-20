@@ -33,7 +33,7 @@ Voici la liste des urls à votre disposition :
 /register : pour se créer un compte
 /logout : pour se déconnecter
 
-Pour tous les urls relatives à la base de données qui suivent, vous devez soit être administrateur, soit bibliothècaire.
+Pour tous les urls relatives à la base de données qui suivent, vous devez être soit administrateur, soit bibliothècaire.
 /livre : renvoie la liste des livres
 /livre/new : renvoie un formulaire pour créer un nouveau livre
 /livre/{id} : renvoie sur la page détail du livre ayant l'id
@@ -66,7 +66,7 @@ Voici une liste non exhaustive d'appels API possible :
     "date_publication": "[annee-mois-jour]",
     "disponible": [true or false]
 })
-- /api/livres/{id} : permet de modifier le livre ayant l'id (Avoir le même body que sur la method POST, mais inclure uniquement les valeurs à modifier)
-- /api/livres/{id} : permet de supprimer le livre ayant l'id
+- /api/livres/{id} [PUT] : permet de modifier le livre ayant l'id (Avoir le même body que sur la method POST, mais inclure uniquement les valeurs à modifier)
+- /api/livres/{id} [DELETE] : permet de supprimer le livre ayant l'id
 
 

@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: LivreRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_ISBN', fields: ['isbn'])]
-#[UniqueEntity(fields: ['isbn'], message: 'There is already a book with this ISBN')]
+#[UniqueEntity(fields: ['isbn'], message: 'Il y a déjà un livre avec cet ISBN.')]
 class Livre
 {
     #[ORM\Id]

@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AbonneRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
-#[UniqueEntity(fields: ['email'], message: 'There is already an abonne with this email')]
+#[UniqueEntity(fields: ['email'], message: 'Il y a déjà un abonné avec cet email.')]
 class Abonne
 {
     #[ORM\Id]
