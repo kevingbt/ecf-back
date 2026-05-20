@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Abonne;
 use App\Entity\Emprunt;
 use App\Entity\Livre;
+use App\Entity\User;
 use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -131,6 +132,16 @@ class AppFixtures extends Fixture
         $emprunt3->setLivreId($livre7);
         $emprunt3->setAbonneId($abonne5);
 
+        $user = new User();
+        $user->setEmail("admin@gmail.com");
+        $user->setRoles(["ROLE_ADMIN", "ROLE_BIBLIOTHECAIRE"]);
+        $user->setPassword('$2y$13$JNGHUGK8o7/j5V0CPQ80m.muf69p0e1VTEfOW/wyI6W8fbAyxSJ/u');
+
+        $user2 = new User();
+        $user2->setEmail("biblio@gmail.com");
+        $user2->setRoles(["ROLE_BIBLIOTHECAIRE"]);
+        $user2->setPassword('$2y$13$JNGHUGK8o7/j5V0CPQ80m.muf69p0e1VTEfOW/wyI6W8fbAyxSJ/u');
+
         $manager->persist($livre);
         $manager->persist($livre2);
         $manager->persist($livre3);
@@ -151,6 +162,9 @@ class AppFixtures extends Fixture
         $manager->persist($emprunt);
         $manager->persist($emprunt2);
         $manager->persist($emprunt3);
+
+        $manager->persist($user);
+        $manager->persist($user2);
       
         $manager->flush();
 
