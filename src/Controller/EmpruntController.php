@@ -30,8 +30,15 @@ final class EmpruntController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // if ($emprunt->getLivreId()->isDisponible() == false) {
+            //     return $this->render('emprunt/new.html.twig', [
+            //         'message' => 'Le livre est déjà emprunté'
+
+            //     ]);
+            // }
             $entityManager->persist($emprunt);
             $entityManager->flush();
+            // $emprunt->getLivreId()->setDisponible(0);
 
             return $this->redirectToRoute('app_emprunt_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -39,6 +46,7 @@ final class EmpruntController extends AbstractController
         return $this->render('emprunt/new.html.twig', [
             'emprunt' => $emprunt,
             'form' => $form,
+            'message' => '',
         ]);
     }
 
@@ -71,7 +79,7 @@ final class EmpruntController extends AbstractController
     #[Route('/{id}', name: 'app_emprunt_delete', methods: ['POST'])]
     public function delete(Request $request, Emprunt $emprunt, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$emprunt->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $emprunt->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($emprunt);
             $entityManager->flush();
         }

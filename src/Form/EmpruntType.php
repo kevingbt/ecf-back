@@ -20,11 +20,11 @@ class EmpruntType extends AbstractType
             ->add('date_retour_effective')
             ->add('livre_id', EntityType::class, [
                 'class' => Livre::class,
-                'choice_label' => 'id',
+                'choice_label' => 'titre',
             ])
             ->add('abonne_id', EntityType::class, [
                 'class' => Abonne::class,
-                'choice_label' => 'id',
+                'choice_label' => 'prenom',
             ])
         ;
     }
