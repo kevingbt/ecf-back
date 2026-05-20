@@ -5,9 +5,12 @@ namespace App\Entity;
 use App\Repository\LivreRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: LivreRepository::class)]
+#[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_ISBN', fields: ['isbn'])]
+#[UniqueEntity(fields: ['isbn'], message: 'There is already a book with this ISBN')]
 class Livre
 {
     #[ORM\Id]
