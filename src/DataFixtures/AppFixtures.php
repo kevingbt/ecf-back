@@ -19,7 +19,7 @@ class AppFixtures extends Fixture
         $livre->setAuteur("Victor Hugo");
         $livre->setIsbn("1234567890");
         $livre->setDatePublication(new DateTime('2022-01-01'));
-        $livre->setDisponible(true);
+        $livre->setDisponible(false);
 
         $livre2 = new Livre();
         $livre2->setTitre("Les Ombres de Verre");
@@ -61,14 +61,14 @@ class AppFixtures extends Fixture
         $livre7->setAuteur("Arthur Lenoir");
         $livre7->setIsbn("91610");
         $livre7->setDatePublication(new DateTime('2022-01-01'));
-        $livre7->setDisponible(true);
+        $livre7->setDisponible(false);
 
         $livre8 = new Livre();
         $livre8->setTitre("Minuit sur Avalon");
         $livre8->setAuteur("Clara Montfort");
         $livre8->setIsbn("5561");
         $livre8->setDatePublication(new DateTime('2022-01-01'));
-        $livre8->setDisponible(true);
+        $livre8->setDisponible(false);
 
         $livre9 = new Livre();
         $livre9->setTitre("Le Chant des Abysses");

@@ -30,15 +30,17 @@ final class EmpruntController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // if ($emprunt->getLivreId()->isDisponible() == false) {
-            //     return $this->render('emprunt/new.html.twig', [
-            //         'message' => 'Le livre est déjà emprunté'
-
-            //     ]);
-            // }
+            $livre = $emprunt->getLivreId();
+            if (!$livre->isDisponible()) {
+                return $this->render('emprunt/new.html.twig', [
+                    'emprunt' => $emprunt,
+                    'form' => $form,
+                    'message' => 'Le livre est déjà emprunté ou indisponible.'
+                ], new Response('', Response::HTTP_UNPROCESSABLE_ENTITY));
+            }
+            $livre->setDisponible(false);
             $entityManager->persist($emprunt);
             $entityManager->flush();
-            // $emprunt->getLivreId()->setDisponible(0);
 
             return $this->redirectToRoute('app_emprunt_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -65,8 +67,11 @@ final class EmpruntController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($emprunt->getDateRetourEffective() !== null) {
+                $livre = $emprunt->getLivreId();
+                $livre->setDisponible(true);
+            }
             $entityManager->flush();
-
             return $this->redirectToRoute('app_emprunt_index', [], Response::HTTP_SEE_OTHER);
         }
 
