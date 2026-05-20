@@ -23,9 +23,6 @@ Voici une liste non exhaustive d'appels API possible :
 - /api/livres/2 : renvoi le détail du livre ayant l'id numéro 2
 
 ToDo list des fonctionnalités à implémenter :
-- respect des règles de création d'un emprunt
-- respect des règles de retour d'un livre
-- respect de l'unicité d'emprunt d'un livre (un emprunt en cours par livre)
 - route api : POST /api/livres
 - route api : PUT /api/livres/{id}
 - route api : DELETE /api/livres/{id}
