@@ -7,10 +7,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[Route('/api')]
 final class ApiController extends AbstractController
 {
-    #[Route('/api/livres', name: 'api_livres', methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/livres', name: 'api_livres', methods: ['GET'])]
     public function livre_get(LivreRepository $livreRepository): JsonResponse
     {
         $livres = $livreRepository->findAll();
@@ -31,7 +34,8 @@ final class ApiController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/api/livres/{id}', name: 'api_livres_details', methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/livres/{id}', name: 'api_livres_details', methods: ['GET'])]
     public function livre_get_details(int $id, LivreRepository $livreRepository): JsonResponse
     {
         $livre = $livreRepository->find($id);
@@ -50,7 +54,8 @@ final class ApiController extends AbstractController
         ]);
     }
 
-    #[Route('/api/livre', name: 'api_livre_new', methods: ['POST'])]
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/livre', name: 'api_livre_new', methods: ['POST'])]
     public function livre_post(): Response
     {
         return $this->render('api/index.html.twig', [
@@ -58,7 +63,8 @@ final class ApiController extends AbstractController
         ]);
     }
 
-    #[Route('/api/livre/{id}', name: 'api_livre_edit', methods: ['PUT'])]
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/livre/{id}', name: 'api_livre_edit', methods: ['PUT'])]
     public function livre_put(): Response
     {
         return $this->render('api/index.html.twig', [
@@ -66,7 +72,8 @@ final class ApiController extends AbstractController
         ]);
     }
 
-    #[Route('/api/livres/{id}', name: 'api_livre_delete', methods: ['DELETE'])]
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/livres/{id}', name: 'api_livre_delete', methods: ['DELETE'])]
     public function livre_delete(int $id, LivreRepository $livreRepository): Response
     {
         $livre = $livreRepository->find($id);
